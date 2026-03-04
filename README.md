@@ -1,32 +1,67 @@
-# Turborepo react-native starter
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+# next-expo-monorepo
 
-## Using this example
+Monorepo setup for **Next.js + Expo (React Native Web)** applications, managed with **pnpm**.
 
-Run the following command:
+Created from `npx create-turbo@latest -e with-react-native-web`.
+Fixed the `@types/minimatch` issue by installing `minimatch` and added custom packages.
 
-```sh
-https://github.com/drcoder71/next-expo-monorepo.git
+---
+
+## Packages
+
+This monorepo includes the following packages:
+
+- **ui** – Custom React/React Native components and design system.
+- **typescript-config** – Centralized TypeScript configuration for all apps and packages.
+- **constants** – Shared constants across apps and packages.
+- **hooks** – Custom React hooks for reusable logic.
+- **storage** – Zustand-based state management and storage utilities.
+- **types** – Shared TypeScript types.
+
+---
+
+## Installation & Development
+
+Install dependencies and start development servers:
+
+```bash
+pnpm i
+pnpm run dev
 ```
 
-## What's inside?
 
-This Turborepo includes the following packages/apps:
+## Build
 
-### Apps and Packages
+To build the apps: `pnpm run build`
 
-- `native`: a [react-native](https://reactnative.dev/) app built with [expo](https://docs.expo.dev/)
-- `web`: a [Next.js](https://nextjs.org/) app built with [react-native-web](https://necolas.github.io/react-native-web/)
-- `@repo/ui`: a stub [react-native](https://reactnative.dev/) component library shared by both `web` and `native` applications
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Struckture
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
+next-expo-monorepo/
+├─ apps/
+│  ├─ web/         # Next.js app
+│  └─ mobile/      # Expo / React Native app
+├─ packages/
+│  ├─ ui/          # Custom React / React Native components
+│  ├─ hooks/       # Custom React hooks
+│  ├─ types/       # Shared TypeScript types
+│  ├─ constants/   # Shared constants
+│  ├─ storage/     # Zustand storage and state management
+│  └─ typescript-config/ # Central TS config
+├─ pnpm-workspace.yaml
+└─ package.json
+---
+---
 
-### Utilities
+## Path Aliases (TypeScript)
 
-This Turborepo has some additional tools already setup for you:
+This monorepo uses central path aliases for easier imports:
 
-- [Expo](https://docs.expo.dev/) for native development
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [Prettier](https://prettier.io) for code formatting
+```
+import { Button } from '@ui/Button';
+import { useAuth } from '@hooks/useAuth';
+import { API_URL } from '@constants/api';
+import { UserType } from '@types/user';
+import { useStore } from '@storage/store';
+```
