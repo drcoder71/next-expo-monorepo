@@ -38,6 +38,9 @@ To build the apps: `pnpm run build`
 ## Struckture
 
 ---
+## Monorepo Structure
+
+```text
 next-expo-monorepo/
 ├─ apps/
 │  ├─ web/         # Next.js app
